@@ -1,0 +1,11 @@
+const Discord = require('discord.js');
+const Bot = new Discord.Client();
+const db = require('../db.js');
+
+module.exports.run = async (bot,message,args,SpawnedName,char,list,listi,economy) => {
+    
+};
+
+module.exports.help = {
+    name:'',
+}

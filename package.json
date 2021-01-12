@@ -1,0 +1,20 @@
+{
+  "name": "spambot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "anilist-node": "^1.6.0",
+    "discord.js": "^12.5.1",
+    "jikan-node": "^1.2.1",
+    "mal-api": "^2.0.0",
+    "mysql2": "^2.2.5",
+    "parse-ms": "^2.1.0",
+    "quick.db": "^7.1.3"
+  }
+}
