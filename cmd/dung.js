@@ -5,7 +5,7 @@ const ms = require('parse-ms');
 
 module.exports.run = async (bot,message,args,SpawnedName,char,list,listi,economy) => {
     let timeout = 7200000;
-    let amount = 300 + Math.random()*250;
+    let amount = 300 + Math.floor(Math.random()*250);
 
     let dung = await economy.fetch(message.author.id + '.dung')
 
