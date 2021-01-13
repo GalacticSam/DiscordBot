@@ -135,6 +135,7 @@ Bot.on('ready', () => {
 Bot.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type==="dm") return;
+    const [rows] = await mydb.selectChar();
     if (Math.floor(Math.random() * 1000) <= SpawnChance){
             await randChar()
             SpawnedName = char.name;
@@ -161,6 +162,6 @@ Bot.on('message', async message => {
     let args = message.content.substring(prefix.length).split(" ");
 
     let cmd = Bot.commands.get(args[0]);
-    if(cmd) cmd.run(Bot,message,args,SpawnedName,char,list,listi,economy,getRows());
+    if(cmd) cmd.run(Bot,message,args,SpawnedName,char,list,listi,economy,getRows(),owner,rows);
     }
 });
