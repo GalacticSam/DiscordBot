@@ -74,9 +74,17 @@ async function randChar(){
         var imgid = Math.floor(Math.random()*imgs.length);
         var img = imgs[imgid];
             TypeCalc();
+            if(await data.Total == 0){
+                fp = '🌟'
+            }else if(await data[type] == 0){
+                fp = '⭐'
+            }else{
+                fp = ''
+            }
             char = {
                 name: data.Name,
                 id: data.ID,
+                fp: fp,
                 series:data.Series,
                 globalid: list.get('Bot.globalids').length,
                 image: img,
