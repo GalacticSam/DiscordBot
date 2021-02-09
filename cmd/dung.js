@@ -12,7 +12,7 @@ module.exports.run = async (bot,message,args,SpawnedName,char,list,listi,economy
     if(dung!==null && timeout - (Date.now() - dung) > 0){
         let time = ms(timeout - (Date.now() - dung));
 
-        return message.channel.send(`It hasn't been 24 hours since your last daily claim.\nYou can try again in ${time.hours}h ${time.minutes}m ${time.seconds}s`);
+        return message.channel.send(`It hasn't been 2 hours since your last dung.\nYou can try again in ${time.hours}h ${time.minutes}m ${time.seconds}s`);
     }else{
         economy.add(message.author.id + '.balance',amount);
         economy.set(message.author.id + '.dung', Date.now())
