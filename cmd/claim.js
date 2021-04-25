@@ -5,6 +5,7 @@ const Bot = new Discord.Client();
 const db = require('../db.js');
 
 module.exports.run = async (bot,message,args,SpawnedName,char,list,listi) => {
+    console.log(SpawnedName);
     for(i = 0;i<args.length;i++){
         if (i == 0 || i == 1){
 
@@ -23,6 +24,7 @@ module.exports.run = async (bot,message,args,SpawnedName,char,list,listi) => {
         db.addTotal(char.id);
         listi.push((message.author.id + '.items'), char)
         list.push((message.author.id + '.items'),listi.get(message.author.id + '.items').length + ' | ' +'['+char.typesymb +'] ' +SpawnedName);
+        SpawnedName = null;
     }else{
         message.channel.send("Wrong name")
     }
