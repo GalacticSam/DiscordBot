@@ -19,8 +19,8 @@ module.exports.run = async (bot,message,args,SpawnedName,char,list,listi) => {
         message.channel.send("Please input name")
     }else if (args[1].toLowerCase() == SpawnedName.toLowerCase()){
         message.reply("Claimed "+'['+char.typesymb+'] ' + SpawnedName);
-        await db.addType(type,char.id);
-        db.addTotal(id);
+        await db.addType(char.type,char.id);
+        db.addTotal(char.id);
         listi.push((message.author.id + '.items'), char)
         list.push((message.author.id + '.items'),listi.get(message.author.id + '.items').length + ' | ' +'['+char.typesymb +'] ' +SpawnedName);
     }else{
