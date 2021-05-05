@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 const Bot = new Discord.Client();
-const anilist = require('anilist-node');
-const Anilist = new anilist();
 const db = require('quick.db');
 const fs = require('fs');
 const mydb = require('./db.js');
+const spawn = require('./scripts/spawnScript.js/');
 var SpawnChance = 0;
 var SpawnedName;
+
 const { token,prefix,owner } = require('./config.json');
 
 async function getRows(){
@@ -65,37 +65,6 @@ function paginate(array, page_size, page_number) {
     return array.slice((page_number - 1) * page_size, page_number * page_size);
 }
 
-async function randChar(){
-    const [rows] = await mydb.selectChar();
-        TypeCalc();
-        var id = Math.floor(Math.random()*rows.length)
-        var data = rows[id]
-        var imgs = data.Images.split(",")
-        var imgid = Math.floor(Math.random()*imgs.length);
-        var img = imgs[imgid];
-            TypeCalc();
-            if(await data.Total == 0){
-                fp = '🌟'
-            }else if(await data[type] == 0){
-                fp = '⭐'
-            }else{
-                fp = ''
-            }
-            char = {
-                name: data.Name,
-                id: data.ID,
-                fp: fp,
-                series:data.Series,
-                globalid: list.get('Bot.globalids').length,
-                image: img,
-                imgid: imgid,
-                type: type,
-                typecolor: tcolor,
-                typesymb: tsymb,
-            }
-        list.push('Bot.globalids', list.get('Bot.globalids').length)
-}
-
 function TypeCalc(){
     raritynum = Math.floor(Math.random() * 1000)
     type = 'Alpha';
@@ -144,24 +113,9 @@ Bot.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type==="dm") return;
     const [rows] = await mydb.selectChar();
-    if (Math.floor(Math.random() * 1000) <= SpawnChance){
-            await randChar()
-            SpawnedName = char.name;
-            var initials = char.name.split(' ')
-            for(i = 0; i < initials.length; i++) {
-                var initialsTxt;
-                if (i == 0){
-                    initialsTxt = initials[i].charAt(0) + '.';
-                } else {
-                    initialsTxt = initialsTxt + " " + initials[i].charAt(0) + ".";
-                }
-            };
-            const spawn = new Discord.MessageEmbed()
-            .setTitle('Test Spawn')
-            .setImage(char.image)
-            .setDescription(initialsTxt)
-            .setColor(tcolor);
-            message.channel.send(spawn);
+    if (Math.floor(Math.random() * 1000) <= 1000){
+        console.log('Spawned 1');
+            spawnChar();
             SpawnChance=0;
     } else {
     SpawnChance++;

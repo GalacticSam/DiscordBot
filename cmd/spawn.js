@@ -36,7 +36,6 @@ module.exports.run = async (Bot,message,args,SpawnedName,char,list,listi,economy
                 return;
             }
             await selectSpawnChar(id,args[1],list)
-            SpawnedName = char.name
             var initials = char.name.split(' ')
             for(i = 0; i < initials.length; i++) {
                 var initialsTxt;
@@ -107,6 +106,7 @@ module.exports.run = async (Bot,message,args,SpawnedName,char,list,listi,economy
                 typecolor: tcolor,
                 typesymb: tsymb,
             }
+            SetSpawnName(char.name);
             return char;
 }
 };
