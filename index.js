@@ -3,7 +3,7 @@ const Bot = new Discord.Client();
 const db = require('quick.db');
 const fs = require('fs');
 const mydb = require('./db.js');
-const spawn = require('./scripts/spawnScript.js/');
+const spawn = require('scripts/spawnScript.js/');
 var SpawnChance = 0;
 var SpawnedName;
 
