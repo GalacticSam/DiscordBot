@@ -3,7 +3,7 @@ const Bot = new Discord.Client();
 const db = require('quick.db');
 const fs = require('fs');
 const mydb = require('./db.js');
-const spawn = require('scripts/spawnScript.js/');
+const spawn = require('./scripts/spawnScript.js');
 var SpawnChance = 0;
 var SpawnedName;
 
@@ -115,7 +115,7 @@ Bot.on('message', async message => {
     const [rows] = await mydb.selectChar();
     if (Math.floor(Math.random() * 1000) <= 1000){
         console.log('Spawned 1');
-            spawnChar();
+            spawn.spawnChar;
             SpawnChance=0;
     } else {
     SpawnChance++;
